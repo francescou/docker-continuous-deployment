@@ -2,7 +2,9 @@
 
 ## Description
 
-This project shows a simple web application made by two python microservices (rest-count and rest-ip).
+This project shows a web application built using a microservices architecture.
+
+There are two python microservices (rest-count and rest-ip).
 
 Using consul-template you can generate a dynamic Nginx configuration so that you can deploy new microservices version with no downtime.
 
