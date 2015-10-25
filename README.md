@@ -18,6 +18,8 @@ docker-compose 1.4.2
 
 ## Getting started
 
+Run the following commands in terminal (the first time you have to wait for a few minutes to download the Docker base images):
+
 ```
 docker build -t rest-count rest-count/
 
