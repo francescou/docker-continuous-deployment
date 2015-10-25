@@ -6,17 +6,12 @@ consul:
   hostname: node1
 
 nginx:
-  image: nginx:1.9.3
+  build: nginx
   ports:
   - "8080:80"
   links:
   - "consul:consul"
   - "ui:ui"
-  volumes:
-  - ./nginx/consul-template:/opt/consul-template
-  - ./nginx/nginx.conf.tpl:/opt/nginx.conf.tpl
-  - ./nginx/nginx-start.sh:/opt/nginx-start.sh
-  command: /opt/nginx-start.sh
 
 ui:
   build: ui
