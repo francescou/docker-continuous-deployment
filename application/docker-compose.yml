@@ -1,0 +1,57 @@
+consul:
+  image: progrium/consul
+  ports:
+  - "8500:8500"
+  command: -server -bootstrap -ui-dir /ui
+  hostname: node1
+
+nginx:
+  image: nginx:1.9.3
+  ports:
+  - "8080:80"
+  links:
+  - "consul:consul"
+  - "ui:ui"
+  volumes:
+  - ./nginx/consul-template:/opt/consul-template
+  - ./nginx/nginx.conf.tpl:/opt/nginx.conf.tpl
+  - ./nginx/nginx-start.sh:/opt/nginx-start.sh
+  command: /opt/nginx-start.sh
+
+ui:
+  build: ui
+
+restcountprimary:
+  image: rest-count
+  environment:
+  - TAGS=primary
+  links:
+  - "consul:consul"
+  - "redis:redis"
+
+restcountbackup:
+  image: rest-count
+  environment:
+  - TAGS=backup
+  links:
+  - "consul:consul"
+  - "redis:redis"
+
+restipprimary:
+  image: rest-ip
+  environment:
+  - TAGS=primary
+  links:
+  - "consul:consul"
+  - "redis:redis"
+
+restipbackup:
+  image: rest-ip
+  environment:
+  - TAGS=backup
+  links:
+  - "consul:consul"
+  - "redis:redis"
+
+redis:
+  image: redis:3.0.3

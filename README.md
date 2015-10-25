@@ -15,7 +15,7 @@ docker build -t rest-count rest-count/
 
 docker build -t rest-ip rest-ip/
 
-docker-compose -f composition/docker-compose.yml up -d 
+docker-compose -f application/docker-compose.yml up -d 
 ```
 
 open your browser to http://localhost:8080/
@@ -27,8 +27,8 @@ now edit rest-count/main.py (for example, you can increase the version to 1.1)
 ```
 docker build -t rest-count rest-count/
 
-docker-compose -f composition/docker-compose.yml up -d restcountprimary
+docker-compose -f application/docker-compose.yml up -d restcountprimary
 
-docker-compose -f composition/docker-compose.yml up -d restcountbackup
+docker-compose -f application/docker-compose.yml up -d restcountbackup
 ```
 
