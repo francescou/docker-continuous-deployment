@@ -35,7 +35,9 @@ def index():
     count = REDIS.get('count')
     count = int(count) + 1 if count else 1
     REDIS.set('count', count)
-    return jsonify(version='1.0', kind=os.environ['TAGS'], count=count)
+    return jsonify(version='1.0', \
+        kind=os.environ['TAGS'], \
+        count=count)
 
 @app.errorhandler(Exception)
 def handle_generic_error(err):
