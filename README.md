@@ -39,6 +39,8 @@ docker build -t rest-count rest-count/
 
 docker-compose -f application/docker-compose.yml up -d restcountprimary
 
+sleep 15
+
 docker-compose -f application/docker-compose.yml up -d restcountbackup
 ```
 
