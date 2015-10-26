@@ -12,6 +12,9 @@ nginx:
   links:
   - "consul:consul"
   - "ui:ui"
+  volumes:
+  - ./nginx/logs/:/var/log/nginx
+
 
 ui:
   build: ui
