@@ -16,7 +16,7 @@ $(document).ready(function () {
       });
 
       $.ajax('api/v1/ip').then(function (data) {
-        $('#ip').text(data.ip + ' at ' + data.time);
+        $('#ip').text(data.last_ip + ' at ' + data.time);
         $('#ip-version').text(data.version);
         $('#ip-kind')
           .text(data.kind)

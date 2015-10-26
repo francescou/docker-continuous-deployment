@@ -8,6 +8,7 @@ import os
 from consulclient import register, deregister
 from redis import StrictRedis
 import datetime
+import time
 
 PORT = 8000
 
@@ -54,4 +55,5 @@ if __name__ == "__main__":
         app.run(host='0.0.0.0', debug=True, threaded=True, port=PORT)
     finally:
         deregister()
+        time.sleep(15)
         logging.warn('shutting down')

@@ -13,6 +13,12 @@ events {
 
 http {
 
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    '$status $body_bytes_sent "$http_referer" '
+    '"$http_user_agent" "$http_x_forwarded_for" $request_time';
+
+  access_log  /var/log/nginx/access.log  main;
+
   upstream restcount {
     {{range service "primary.rest-count"}}
     server {{.Address}}:{{.Port}};
