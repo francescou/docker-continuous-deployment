@@ -8,6 +8,8 @@ There are two python microservices (rest-count and rest-ip).
 
 Using consul-template you can generate a dynamic Nginx configuration so that you can deploy new microservices version with no downtime.
 
+You can find additional information on my [Slideshare presentation "Always be shipping"](http://www.slideshare.net/francescou/always-be-shipping)
+
 ![Diagram](docs/diagram.png)
 
 ## Prerequisites
