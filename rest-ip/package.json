@@ -1,0 +1,17 @@
+{
+  "name": "rest-ip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "consul": "^0.18.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.48"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
