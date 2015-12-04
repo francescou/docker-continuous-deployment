@@ -1,11 +1,18 @@
-FROM nginx:1.9.3
+FROM nginx:1.9.7
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update \
+    && apt-get install -y \
+    curl \
+    unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /opt
-
 COPY nginx* ./
 
-RUN curl --location-trusted https://github.com/hashicorp/consul-template/releases/download/v0.10.0/consul-template_0.10.0_linux_amd64.tar.gz | tar -xz
+ENV CONSUL_VERSION 0.11.1
+RUN curl --location-trusted https://releases.hashicorp.com/consul-template/${CONSUL_VERSION}/consul-template_${CONSUL_VERSION}_linux_amd64.zip -o temp.zip \
+    && unzip temp.zip \
+    && rm temp.zip
 
 CMD ["./nginx-start.sh"]
