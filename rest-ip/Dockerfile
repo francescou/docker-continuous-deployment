@@ -6,6 +6,10 @@ EXPOSE 3000
 
 ADD ./app.js /opt/
 
-RUN npm install mongodb express consul lodash
+ADD ./package.json /opt/
 
-CMD ["node", "/opt/app.js"]
+WORKDIR /opt/
+
+RUN npm install
+
+CMD ["node", "app.js"]
