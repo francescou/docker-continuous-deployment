@@ -4,12 +4,12 @@ MAINTAINER Francesco Uliana <francesco@uliana.it>
 
 EXPOSE 3000
 
-ADD ./app.js /opt/
-
 ADD ./package.json /opt/
 
 WORKDIR /opt/
 
 RUN npm install
+
+ADD ./app.js /opt/
 
 CMD ["node", "app.js"]
