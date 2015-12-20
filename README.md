@@ -36,7 +36,7 @@ open your browser to http://localhost:8080/
 
 you can check the Consul state on http://localhost:8500/ui/
 
-now edit rest-count/main.py (for example, you can increase the version to 1.1)
+now edit `rest-count/main.py` (for example, you can increase the version to 1.1)
 
 ```
 docker build -t rest-count rest-count/
@@ -48,6 +48,9 @@ sleep 15
 docker-compose -f application/docker-compose.yml up -d restcountbackup
 ```
 
+the updated microservice will be deployed with no downtime.
+
+You can also modify the _rest-ip_ microservice in the same way (see `rest-ip/app.js`).
 
 ## Scaling microservices
 
