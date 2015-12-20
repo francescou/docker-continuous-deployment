@@ -41,7 +41,7 @@ restipprimary:
   - TAGS=primary
   links:
   - "consul:consul"
-  - "redis:redis"
+  - "mongo:mongo"
 
 restipbackup:
   image: rest-ip
@@ -49,7 +49,10 @@ restipbackup:
   - TAGS=backup
   links:
   - "consul:consul"
-  - "redis:redis"
+  - "mongo:mongo"
 
 redis:
   image: redis:3.0.3
+
+mongo:
+  image: mongo:2.6.11
