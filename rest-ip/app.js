@@ -22,7 +22,7 @@ mongo.MongoClient.connect('mongodb://mongo:27017/docker', function(err, db) {
     cursor.each(function(err, doc) {
       if (doc === null) {
         access.insert({ip: req.connection.remoteAddress, time: new Date()});
-        res.send({version: 0.1, kind: TAGS, last_ip: last.ip, time: last.time});
+        res.send({version: '1.0', kind: TAGS, last_ip: last.ip, time: last.time});
       } else {
         last = doc;
       }
