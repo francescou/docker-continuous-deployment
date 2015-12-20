@@ -1,7 +1,7 @@
 {
   "name": "rest-ip",
   "version": "1.0.0",
-  "description": "",
+  "description": "node.js microservice with MongoDB database",
   "main": "app.js",
   "dependencies": {
     "consul": "^0.18.1",
@@ -10,8 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Francesco Uliana francesco@uliana.it",
+  "license": "MIT"
 }
