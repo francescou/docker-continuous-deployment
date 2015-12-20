@@ -4,7 +4,9 @@
 
 This project shows a web application built using a microservices architecture.
 
-There are two python microservices (rest-count and rest-ip).
+There are two microservices:
+    - *rest-count* implemented in Python (Flask microframework) using a Redis database
+    - *rest-ip* implemented in Node.js (Express framework) using a Mongodb database
 
 Using consul-template you can generate a dynamic Nginx configuration so that you can deploy new microservices version with no downtime.
 
