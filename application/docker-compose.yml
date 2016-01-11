@@ -1,8 +1,8 @@
 consul:
-  image: progrium/consul
+  image: gliderlabs/consul-server:0.6
   ports:
   - "8500:8500"
-  command: -server -bootstrap -ui-dir /ui
+  command: -server -bootstrap 
   hostname: node1
 
 nginx:
@@ -14,7 +14,6 @@ nginx:
   - "ui:ui"
   volumes:
   - ./nginx/logs/:/var/log/nginx
-
 
 ui:
   build: ui
