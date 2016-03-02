@@ -51,7 +51,7 @@ restipbackup:
   - "mongo:mongo"
 
 redis:
-  image: redis:3.0.3
+  image: redis:3.0.7-alpine
 
 mongo:
-  image: mongo:2.6.11
+  image: mongo:3.2.3
