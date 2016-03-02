@@ -1,5 +1,6 @@
-# DOCKER-VERSION 1.8.3
-FROM node:4.2.2-slim
+# DOCKER-VERSION 1.10.2
+FROM node:5.6.0-slim
+
 MAINTAINER Francesco Uliana <francesco@uliana.it>
 
 EXPOSE 3000
