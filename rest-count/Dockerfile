@@ -1,6 +1,8 @@
-# DOCKER-VERSION 1.8.3
-FROM python:2.7-slim
+# DOCKER-VERSION 1.10.2
+FROM python:2.7.11-slim
 MAINTAINER Francesco Uliana <francesco@uliana.it>
+
+RUN pip install virtualenv
 
 WORKDIR /app
 RUN virtualenv /env
