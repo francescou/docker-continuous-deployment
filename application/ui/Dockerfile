@@ -1,4 +1,5 @@
-FROM python:2.7-slim
+FROM python:2.7.11-slim
+
 MAINTAINER Francesco Uliana <francesco@uliana.it>
 
 ADD ./web/ /opt/web/
