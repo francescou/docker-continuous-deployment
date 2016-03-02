@@ -16,9 +16,9 @@ You can find additional information on my [Slideshare presentation "Always be sh
 
 ## Prerequisites
 
-Docker 1.9.1
+Docker 1.10
 
-docker-compose 1.5.2
+docker-compose 1.6
 
 ## Getting started
 
