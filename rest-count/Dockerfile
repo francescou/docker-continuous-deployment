@@ -1,5 +1,5 @@
 # DOCKER-VERSION 1.10.2
-FROM python:2.7.11-slim
+FROM python:2.7.11-alpine
 MAINTAINER Francesco Uliana <francesco@uliana.it>
 
 RUN pip install virtualenv

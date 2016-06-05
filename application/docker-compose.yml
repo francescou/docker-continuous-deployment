@@ -1,9 +1,8 @@
 consul:
-  image: gliderlabs/consul-server:0.6
+  image: consul:v0.6.4
   ports:
   - "8500:8500"
-  command: -server -bootstrap 
-  hostname: node1
+  command: agent -dev -client 0.0.0.0
 
 nginx:
   build: nginx
@@ -51,7 +50,7 @@ restipbackup:
   - "mongo:mongo"
 
 redis:
-  image: redis:3.0.7-alpine
+  image: redis:3.2.0-alpine
 
 mongo:
-  image: mongo:3.2.3
+  image: mongo:3.3.6
