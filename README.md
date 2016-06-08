@@ -16,19 +16,15 @@ You can find additional information on my [Slideshare presentation "Always be sh
 
 ## Prerequisites
 
-Docker 1.10
+Docker 1.11
 
-docker-compose 1.6
+docker-compose 1.7
 
 ## Getting started
 
 Run the following commands in terminal (the first time you have to wait for a few minutes to download the Docker base images):
 
 ```
-docker build -t rest-count rest-count/
-
-docker build -t rest-ip rest-ip/
-
 docker-compose -f application/docker-compose.yml up -d
 ```
 
@@ -39,7 +35,7 @@ you can check the Consul state on http://localhost:8500/ui/
 now edit `rest-count/main.py` (for example, you can increase the version to 1.1)
 
 ```
-docker build -t rest-count rest-count/
+docker build -t francescou/rest-count rest-count/
 
 docker-compose -f application/docker-compose.yml up -d restcountprimary
 

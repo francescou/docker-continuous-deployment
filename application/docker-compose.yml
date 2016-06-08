@@ -18,7 +18,7 @@ ui:
   build: ui
 
 restcountprimary:
-  image: rest-count
+  image: francescou/rest-count
   environment:
   - TAGS=primary
   links:
@@ -26,7 +26,7 @@ restcountprimary:
   - "redis:redis"
 
 restcountbackup:
-  image: rest-count
+  image: francescou/rest-count
   environment:
   - TAGS=backup
   links:
@@ -34,7 +34,7 @@ restcountbackup:
   - "redis:redis"
 
 restipprimary:
-  image: rest-ip
+  image: francescou/rest-ip
   environment:
   - TAGS=primary
   links:
@@ -42,7 +42,7 @@ restipprimary:
   - "mongo:mongo"
 
 restipbackup:
-  image: rest-ip
+  image: francescou/rest-ip
   environment:
   - TAGS=backup
   links:
