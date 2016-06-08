@@ -4,9 +4,9 @@
   "description": "node.js microservice with MongoDB database",
   "main": "app.js",
   "dependencies": {
-    "consul": "^0.23.0",
+    "consul": "^0.25.0",
     "express": "^4.13.4",
-    "mongodb": "^2.1.7"
+    "mongodb": "^2.1.21"
   },
   "devDependencies": {},
   "scripts": {

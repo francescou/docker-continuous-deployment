@@ -1,5 +1,5 @@
 # DOCKER-VERSION 1.10.2
-FROM node:5.6.0-slim
+FROM node:6.2.1-slim
 
 MAINTAINER Francesco Uliana <francesco@uliana.it>
 
