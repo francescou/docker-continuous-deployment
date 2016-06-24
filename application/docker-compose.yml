@@ -1,56 +1,58 @@
-consul:
-  image: consul:v0.6.4
-  ports:
-  - "8500:8500"
-  command: agent -dev -client 0.0.0.0
+version: '2'
+services:
+  consul:
+    image: consul:v0.6.4
+    ports:
+    - "8500:8500"
+    command: agent -dev -client 0.0.0.0
 
-nginx:
-  build: nginx
-  ports:
-  - "8080:80"
-  links:
-  - "consul:consul"
-  - "ui:ui"
-  volumes:
-  - ./nginx/logs/:/var/log/nginx
+  nginx:
+    build: nginx
+    ports:
+    - "8080:80"
+    links:
+    - "consul:consul"
+    - "ui:ui"
+    volumes:
+    - ./nginx/logs/:/var/log/nginx
 
-ui:
-  build: ui
+  ui:
+    build: ui
 
-restcountprimary:
-  image: francescou/rest-count
-  environment:
-  - TAGS=primary
-  links:
-  - "consul:consul"
-  - "redis:redis"
+  restcountprimary:
+    image: francescou/rest-count
+    environment:
+    - TAGS=primary
+    links:
+    - "consul:consul"
+    - "redis:redis"
 
-restcountbackup:
-  image: francescou/rest-count
-  environment:
-  - TAGS=backup
-  links:
-  - "consul:consul"
-  - "redis:redis"
+  restcountbackup:
+    image: francescou/rest-count
+    environment:
+    - TAGS=backup
+    links:
+    - "consul:consul"
+    - "redis:redis"
 
-restipprimary:
-  image: francescou/rest-ip
-  environment:
-  - TAGS=primary
-  links:
-  - "consul:consul"
-  - "mongo:mongo"
+  restipprimary:
+    image: francescou/rest-ip
+    environment:
+    - TAGS=primary
+    links:
+    - "consul:consul"
+    - "mongo:mongo"
 
-restipbackup:
-  image: francescou/rest-ip
-  environment:
-  - TAGS=backup
-  links:
-  - "consul:consul"
-  - "mongo:mongo"
+  restipbackup:
+    image: francescou/rest-ip
+    environment:
+    - TAGS=backup
+    links:
+    - "consul:consul"
+    - "mongo:mongo"
 
-redis:
-  image: redis:3.2.0-alpine
+  redis:
+    image: redis:3.2.0-alpine
 
-mongo:
-  image: mongo:3.3.6
+  mongo:
+    image: mongo:3.3.6
