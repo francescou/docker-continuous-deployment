@@ -17,6 +17,13 @@ services:
     - restcount
     - restip
 
+  visualizer:
+    image: dockersamples/visualizer
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+    - 'CTX_ROOT=/visualizer'
+
   restcount:
     image: francescou/rest-count:1.0
     healthcheck:
