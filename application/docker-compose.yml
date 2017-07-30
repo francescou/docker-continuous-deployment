@@ -9,7 +9,7 @@ services:
     - "8080:80"
     volumes:
     - ./ui/web/:/usr/share/nginx/html/:ro
-    - ./conf.d/:/etc/nginx/conf.d/:ro
+    - ./default.conf:/etc/nginx/conf.d/default.conf:ro
     tmpfs:
     - /var/cache/nginx/
     - /var/run/
