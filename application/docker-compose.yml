@@ -1,58 +1,33 @@
-version: '2'
+version: '3.2'
+
 services:
-  consul:
-    image: consul:v0.6.4
-    ports:
-    - "8500:8500"
-    command: agent -dev -client 0.0.0.0
 
   nginx:
-    build: nginx
+    image: nginx:alpine
+    read_only: true
     ports:
     - "8080:80"
-    links:
-    - "consul:consul"
-    - "ui:ui"
     volumes:
-    - ./nginx/logs/:/var/log/nginx
+    - ./ui/web/:/usr/share/nginx/html/:ro
+    - ./conf.d/:/etc/nginx/conf.d/:ro
+    tmpfs:
+    - /var/cache/nginx/
+    - /var/run/
 
-  ui:
-    build: ui
-
-  restcountprimary:
+  restcount:
     image: francescou/rest-count
-    environment:
-    - TAGS=primary
-    links:
-    - "consul:consul"
-    - "redis:redis"
+    read_only: true
 
-  restcountbackup:
-    image: francescou/rest-count
-    environment:
-    - TAGS=backup
-    links:
-    - "consul:consul"
-    - "redis:redis"
-
-  restipprimary:
+  restip:
     image: francescou/rest-ip
-    environment:
-    - TAGS=primary
-    links:
-    - "consul:consul"
-    - "mongo:mongo"
-
-  restipbackup:
-    image: francescou/rest-ip
-    environment:
-    - TAGS=backup
-    links:
-    - "consul:consul"
-    - "mongo:mongo"
+    read_only: true
 
   redis:
     image: redis:3.2.0-alpine
+    read_only: true
 
   mongo:
     image: mongo:3.3.6
+    read_only: true
+    tmpfs:
+    - /tmp/
