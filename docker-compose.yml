@@ -13,14 +13,22 @@ services:
     tmpfs:
     - /var/cache/nginx/
     - /var/run/
+    - /logs/
+    depends_on:
+    - restcount
+    - restip
 
   restcount:
     image: francescou/rest-count
     read_only: true
+    depends_on:
+    - redis
 
   restip:
     image: francescou/rest-ip
     read_only: true
+    depends_on:
+    - mongo
 
   redis:
     image: redis:3.2.0-alpine
