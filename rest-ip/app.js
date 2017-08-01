@@ -1,6 +1,5 @@
 'use strict';
 
-var consul = require('consul')({host: 'consul'});
 var express = require('express');
 var os = require('os');
 var mongo = require('mongodb');
@@ -34,33 +33,5 @@ mongo.MongoClient.connect('mongodb://mongo:27017/docker', function(err, db) {
   });
 
   var server = app.listen(PORT);
-
-  // consul registration / deregistration
-  require('dns').lookup(os.hostname(), function (err, address) {
-    console.log('addr: '+ address);
-    consul.agent.service.register({
-      tags: TAGS.split(','),
-      name: 'rest-ip',
-      address: address,
-      port: PORT,
-      id: 'worker-' + address,
-      check: {
-        http: 'http://' + address + ':' + PORT + '/api/v1/health',
-        interval: '1s'
-      }
-    }, function () {
-      console.log('registration done');
-      process.on('SIGTERM', function() {
-        console.log('deregistering');
-        consul.agent.service.deregister('worker-' + address, function () {
-          console.log('deregistered');
-          setTimeout(function() {
-            console.log('shutting down server');
-            server.close();
-          }, 5000);
-        });
-      });
-    });
-  });
 
 });

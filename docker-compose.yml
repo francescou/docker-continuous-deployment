@@ -1,0 +1,67 @@
+version: '3.3'
+
+services:
+
+  nginx:
+    image: nginx:alpine
+    read_only: true
+    ports:
+    - "8080:80"
+    volumes:
+    - ./ui/:/usr/share/nginx/html/:ro
+    - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+    - /var/cache/nginx/
+    - /var/run/
+    - /logs/
+    depends_on:
+    - restcount
+    - restip
+
+  visualizer:
+    image: dockersamples/visualizer
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+    - 'CTX_ROOT=/visualizer'
+
+  restcount:
+    image: francescou/rest-count:1.0
+    healthcheck:
+      test: ["CMD", "wget", "-sq", "http://localhost:8000/api/v1/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 20s
+    read_only: true
+    depends_on:
+    - redis
+
+  restip:
+    image: francescou/rest-ip:1.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/v1/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 20s
+    read_only: true
+    depends_on:
+    - mongo
+
+  redis:
+    image: redis:3.2.0-alpine
+    read_only: true
+
+  mongo:
+    image: mongo:3.3.6
+    read_only: true
+    volumes:
+    - /tmp/
