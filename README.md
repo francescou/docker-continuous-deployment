@@ -1,5 +1,6 @@
 # Continuous Deployment with Docker (swarm mode)
 
+
 ## Description
 
 This project shows a web application built using a microservices architecture.
@@ -17,6 +18,8 @@ You can find additional information on my [Slideshare presentation "Always be sh
 ## Prerequisites
 
 Docker 17.06.0-ce
+
+(see [legacy](https://github.com/francescou/docker-continuous-deployment/tree/legacy) tag if you're interested into the previous version for Docker 1.11 using docker-compose and consul.)
 
 ## Getting started
 
