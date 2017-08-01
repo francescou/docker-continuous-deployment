@@ -23,22 +23,22 @@ Docker 17.06.0-ce
 
 ## Getting started
 
-Run the following commands in terminal (the first time you have to wait for a few minutes to download the Docker base images):
+run on a single node docker swarm cluster the following commands in terminal (the first time you have to wait for a few minutes to download the Docker base images), :
 
 ```
-docker stack deploy -c docker-compose.yml continuousdeployment
+docker stack deploy -c docker-compose.yml cd
 ```
 
-open your browser to <http://localhost:8080/>
+open your browser to <http://127.0.0.1:8080/>
 
-you can check the services on <http://localhost:8080/visualizer/>
+you can check the services on <http://127.0.0.1:8080/visualizer/>
 
 now edit `rest-count/main.py` (for example, you can increase the version to 1.1)
 
 ```
 docker build -t francescou/rest-count:1.1 rest-count/
 
-docker service update --image francescou/rest-count:1.1 continuousdeployment_restcount
+docker service update --image francescou/rest-count:1.1 cd_restcount
 ```
 
 the updated microservice will be deployed with no downtime.
@@ -49,16 +49,16 @@ You can also modify the _rest-ip_ microservice in the same way (see `rest-ip/app
 
 this section will explain how to can scale up and down the docker services.
 
-open your browser to <http://localhost:8080/visualizer/>. There you will find a _rest-count_ service, running on two replicas. Execute
+open your browser to <http://127.0.0.1:8080/visualizer/>. There you will find a _rest-count_ service, running on two replicas. Execute
 
-    docker service scale continuousdeployment_restcount=4
+    docker service scale cd_restcount=4
 
-check again <http://localhost:8080/visualizer/> to ensure that there are now four _rest-count_ instance.
+check again <http://127.0.0.1:8080/visualizer/> to ensure that there are now four _rest-count_ instance.
 
-Make a few requests to <http://localhost:8080/api/v1/count> and then run `docker service logs cd_restcount` to see how requests are processed by different _rest-count_ instances.
+Make a few requests to <http://127.0.0.1:8080/api/v1/count> and then run `docker service logs cd_restcount` to see how requests are processed by different _rest-count_ instances.
 
 You can now scale down the _rest-count_ service without having any down time, e.g.:
 
-    docker service scale continuousdeployment_restcount=2
+    docker service scale cd_restcount=2
 
-Again, you can check <http://localhost:8080/visualizer/> to see that there are now only two primary instances.
+Again, you can check <http://127.0.0.1:8080/visualizer/> to see that there are now only two instances.
