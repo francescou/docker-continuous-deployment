@@ -35,7 +35,7 @@ you can check the Consul state on http://localhost:8500/ui/
 now edit `rest-count/main.py` (for example, you can increase the version to 1.1)
 
 ```
-docker build -t francescou/rest-count rest-count/
+docker build -t francescou/rest-count:legacy rest-count/
 
 docker-compose -f application/docker-compose.yml up -d restcountprimary
 

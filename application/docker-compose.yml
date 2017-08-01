@@ -20,7 +20,7 @@ services:
     build: ui
 
   restcountprimary:
-    image: francescou/rest-count
+    image: francescou/rest-count:legacy
     environment:
     - TAGS=primary
     links:
@@ -28,7 +28,7 @@ services:
     - "redis:redis"
 
   restcountbackup:
-    image: francescou/rest-count
+    image: francescou/rest-count:legacy
     environment:
     - TAGS=backup
     links:
@@ -36,7 +36,7 @@ services:
     - "redis:redis"
 
   restipprimary:
-    image: francescou/rest-ip
+    image: francescou/rest-ip:legacy
     environment:
     - TAGS=primary
     links:
@@ -44,7 +44,7 @@ services:
     - "mongo:mongo"
 
   restipbackup:
-    image: francescou/rest-ip
+    image: francescou/rest-ip:legacy
     environment:
     - TAGS=backup
     links:
